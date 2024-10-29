@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 test numero 1
 Test numero 2 from pc-diocese
 test numero 3 laptop
+test numero 4 sur branche test laptop
+=======
+test numero 1
+>>>>>>> parent of cedec4e (edit from pc diocese)
