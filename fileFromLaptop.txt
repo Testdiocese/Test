@@ -6,3 +6,4 @@ test numero 4 sur branche test laptop
 =======
 test numero 1
 >>>>>>> parent of cedec4e (edit from pc diocese)
+Pourquoi il y a cette ligne qui s'est ajoutée et le head aussi ??? 
