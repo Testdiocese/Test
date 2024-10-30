@@ -1,0 +1,41 @@
+name: Check Word in File
+
+# Déclenchement à chaque push ou pull request sur la branche principale
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-word:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout du dépôt pour avoir accès aux fichiers
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Lire le fichier et vérifier s'il contient le mot spécifié
+      - name: Check if file contains specific word
+        id: check_word
+        run: |
+          FILE_PATH="../../function.txt"   # Remplacez par le chemin de votre fichier
+          WORD="oui"                     # Remplacez par le mot à vérifier
+
+          # Vérification si le fichier contient le mot
+          if grep -q "$WORD" "$FILE_PATH"; then
+            echo "::set-output name=found::true"
+          else
+            echo "::set-output name=found::false"
+          fi
+
+      # 3. Afficher le résultat du test
+      - name: Show Result
+        run: |
+          if [ "${{ steps.check_word.outputs.found }}" == "true" ]; then
+            echo "Le mot '$WORD' a été trouvé dans le fichier."
+          else
+            echo "Le mot '$WORD' n'a pas été trouvé dans le fichier."
+          fi
